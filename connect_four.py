@@ -1,5 +1,7 @@
 import os
 os.system('cls' if os.name == 'nt' else 'clear')
+import random
+import time
 
 board = [
     [' ',' ',' ',' ',' ',' ',' '],
@@ -84,8 +86,9 @@ def isEnded(player):
                 count += 1
             else : count = 0
             if count >= 4 : 
-                print(f'\n{player} won')
+                print(f'\n{player} won (row) {row}')
                 return True
+        count = 0
 
     columns = getColumns() 
     count = 0 
@@ -95,8 +98,9 @@ def isEnded(player):
                 count += 1
             else : count = 0
             if count >= 4 : 
-                print(f'\n{player} won')
+                print(f'\n{player} won (column) {column}')
                 return True
+            count = 0
 
     diagonals = getDiagonals()
     count = 0
@@ -106,27 +110,40 @@ def isEnded(player):
                 count += 1
             else : count = 0
             if count >= 4 : 
-                print(f'\n{player} won')
+                print(f'\n{player} won (diagonal) {diagonal}')
                 return True
+            count = 0
     
+    spacesLeft = 0
+    for i in board:
+        spacesLeft += i.count(' ')
+    if spacesLeft == 0:
+        print('draw.')
+        return True
+
     return False
 
 def game():
     showBoard()
     turn = 0
     ended = False
+    move = 0
 
     while ended == False:
         if turn == 0: player = 'X'
-        else : player = 'O'
+        else: player = 'O'
         
-        move = input(' \n')
+        #move = input(' \n')
+        move = str(random.randint(1,7))
         if move == '!stop' : break
-        else :
+        else:
             move = addMove(move,player)
-            if move == 'error' : 
+            if move == 'error': 
                 showBoard()
             else : turn = not turn
             ended = isEnded(player)
+        time.sleep(0.01)
+
+
 
 game()
