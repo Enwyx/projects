@@ -12,7 +12,6 @@ board = [
     [' ',' ',' ',' ',' ',' ',' '],
 ]
 
-
 def showBoard():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -75,8 +74,6 @@ def addMove(move, player):
         else : return 'error'
     else : return 'error'
 
-
-
 def isEnded(player):
     rows = board
     count = 0
@@ -133,8 +130,8 @@ def game():
         if turn == 0: player = 'X'
         else: player = 'O'
         
-        #move = input(' \n')
-        move = str(random.randint(1,7))
+        move = input(' \n')
+        #move = str(random.randint(1,7))
         if move == '!stop' : break
         else:
             move = addMove(move,player)
@@ -143,7 +140,5 @@ def game():
             else : turn = not turn
             ended = isEnded(player)
         #time.sleep(0.01)
-
-
-
+        
 game()
