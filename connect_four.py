@@ -96,11 +96,12 @@ def isEnded(player):
         for i in column:
             if i == player : 
                 count += 1
+                print(count)
             else : count = 0
             if count >= 4 : 
                 print(f'\n{player} won (column) {column}')
                 return True
-            count = 0
+        count = 0
 
     diagonals = getDiagonals()
     count = 0
@@ -112,7 +113,7 @@ def isEnded(player):
             if count >= 4 : 
                 print(f'\n{player} won (diagonal) {diagonal}')
                 return True
-            count = 0
+        count = 0
     
     spacesLeft = 0
     for i in board:
@@ -133,8 +134,8 @@ def game():
         if turn == 0: player = 'X'
         else: player = 'O'
         
-        #move = input(' \n')
-        move = str(random.randint(1,7))
+        move = input(' \n')
+        #move = str(random.randint(1,7))
         if move == '!stop' : break
         else:
             move = addMove(move,player)
@@ -142,7 +143,7 @@ def game():
                 showBoard()
             else : turn = not turn
             ended = isEnded(player)
-        time.sleep(0.01)
+        #time.sleep(0.01)
 
 
 
