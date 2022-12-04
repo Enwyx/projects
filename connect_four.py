@@ -86,7 +86,7 @@ def isEnded(player):
                 count += 1
             else : count = 0
             if count >= 4 : 
-                print(f'\n{player} won (row) {row}')
+                print(f'\n{player} won \nrow : {row}')
                 return True
         count = 0
 
@@ -96,10 +96,9 @@ def isEnded(player):
         for i in column:
             if i == player : 
                 count += 1
-                print(count)
             else : count = 0
             if count >= 4 : 
-                print(f'\n{player} won (column) {column}')
+                print(f'\n{player} won \ncolumn : {column}')
                 return True
         count = 0
 
@@ -111,7 +110,7 @@ def isEnded(player):
                 count += 1
             else : count = 0
             if count >= 4 : 
-                print(f'\n{player} won (diagonal) {diagonal}')
+                print(f'\n{player} won \ndiagonal : {diagonal}')
                 return True
         count = 0
     
@@ -134,8 +133,8 @@ def game():
         if turn == 0: player = 'X'
         else: player = 'O'
         
-        move = input(' \n')
-        #move = str(random.randint(1,7))
+        #move = input(' \n')
+        move = str(random.randint(1,7))
         if move == '!stop' : break
         else:
             move = addMove(move,player)
